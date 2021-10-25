@@ -1,16 +1,32 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import React from 'react';
+import { BrowserRouter,Route,Switch} from 'react-router-dom'
 import Login from './components/Login';
-import Event from './components/Event';
+import Welcome from './components/Welcome';
+import AdminDashboard from'./components/AdminDashboard';
+import CommitteMemberDashboard from './components/CommitteMemberDashboard'
+import Register from './components/Register'
+
 
 
 function App() {
   return (
-   
-        <Login/>
-        // <Event component= {() => <Event authorized={false} />}/>
-    
+   <BrowserRouter>
+      <div className="App">
+       
+        <Switch>
+        <Route exact path='/' component={Welcome}/>
+        <Route exact path='/login' component={Login}/>
+        <Route  path='/Welcome' component={Welcome}/>
+        <Route  path='/AdminDashboard' component={AdminDashboard}/>
+        <Route  path='/CommitteMemberDashboard' component={CommitteMemberDashboard}/>
+        <Route  path='/register' component={Register}/>
+        </Switch>
+      
+    </div>
+   </BrowserRouter>
   );
 }
 
-export default App;
+ export default App;
