@@ -1,40 +1,107 @@
-import React from 'react'
-import { Form, Col, Container, Row, Button } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import React, { Component } from 'react'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
-const Login = () => {
-    const history = useHistory();
-  
-  const handleRoute = () =>{ 
-    history.push("/Event");
-  }
-    return (
-        <>
-            <Container>
-                <h1 className="shadow-sm text-success mt-5 p-3 text-center rounded">Admin Login</h1>
-                <Row className="mt-5">
-                    <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-sm rounded-lg">
-                        <Form>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" />
+import AppBar from 'material-ui/AppBar';
+import LoginService from '../services/LoginService'
 
-                            </Form.Group>
+class Login extends Component {
+     constructor(props) {
+        super(props);
 
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Password" />
-                            </Form.Group>
+        this.state = {
+            username: '',
+            password: ''
+        }
+    }
+    handleRegisterClick()
+    {
+         const {history} = this.props;
+         history.push('/register');
+        
 
-                            <Button variant="Success btn-block" type="submit"  onClick={handleRoute}>
-                                Login
-                            </Button>
-                        </Form>
-                    </Col>
-                </Row>
-            </Container>
-        </>
-    )
+    }
+  handleClick(event){
+      this.error = null;
+      this.spin = true;
+
+
+      const {history} = this.props;
+        var payload={
+        "email":this.state.username,
+        "password":this.state.password
+        }
+        LoginService.Login(payload).then((response) => {
+            if(response.status === 200){ 
+            console.log("sdb ashdaksd",response);
+            let role = response.data.role;
+            if(role === "admin")
+            {
+               
+                history.push('/AdminDashboard');  
+            }   else if(role === "committemember")  
+            {
+                
+                history.push('/AdminDashboard');  
+            }
+            else{
+                
+                history.push('/AdminDashboard');  
+            }
+            
+        }
+        else if(response.status === 204){  
+            alert("username or password do not match")
+            this.setState({password: ""});
+        }
+        else{
+            history.push('/register');
+            console.log("Username does not exists");   
+        }
+        })
+        .catch((error) => {
+          this.spin = false;
+          this.setState({password: ""});
+        });
+        
+    }        
+    render() {
+        return (
+            <div>
+                <MuiThemeProvider>
+                    <div>
+                        <AppBar
+                            title="Login"
+                        />
+                        <TextField
+                            hintText="Enter your Username"
+                            floatingLabelText="Username"
+                            onChange={
+                                (event, newvalue) => this.setState({ username: newvalue })
+                            }
+                        />
+                        <br />
+                        <TextField
+                            type="password"
+                            hintText="Enter your Password"
+                            floatingLabelText="Password"
+                            onChange={(event, newValue) => this.setState({ password: newValue })}
+                        />
+                        <br />
+                        <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)} />
+                        <RaisedButton label="Register" primary={true} style={style} onClick={() => this.handleRegisterClick()} />
+                    </div>
+
+                </MuiThemeProvider>
+
+            </div>
+        )
+    }
 }
+
+const style = {
+    margin: 15,
+};
 
 export default Login
