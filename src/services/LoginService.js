@@ -3,7 +3,7 @@ import axios from 'axios';
  //const apiBaseUrl = "http://localhost:8080/";
 class LoginService{
     Login(employee){
-        return axios.post(apiBaseUrl+"/login", employee)
+        return axios.post(apiBaseUrl+"login", employee)
     }
     Register(employee){
         return axios.post(apiBaseUrl+"/register", employee)
