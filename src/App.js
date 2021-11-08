@@ -5,25 +5,26 @@ import { BrowserRouter,Route,Switch} from 'react-router-dom'
 import Login from './components/Login';
 import Welcome from './components/Welcome';
 import AdminDashboard from'./components/AdminDashboard';
-import CommitteMemberDashboard from './components/CommitteMemberDashboard'
+import CompanyMemberDashboard from './components/CompanyMemberDashboard'
 import Register from './components/Register'
-
+import NavBar from './components/NavBar'
+import CreateEvent from './components/CreateEvent'
 
 
 function App() {
   return (
    <BrowserRouter>
       <div className="App">
-       
+       <NavBar/>
         <Switch>
         <Route exact path='/' component={Welcome}/>
-        <Route exact path='/login' component={Login}/>
+        <Route exact path='/Login' component={Login}/>
         <Route  path='/Welcome' component={Welcome}/>
         <Route  path='/AdminDashboard' component={AdminDashboard}/>
-        <Route  path='/CommitteMemberDashboard' component={CommitteMemberDashboard}/>
-        <Route  path='/register' component={Register}/>
+        <Route  path='/CompanyMemberDashboard' component={CompanyMemberDashboard}/>
+        <Route  path='/Register' component={Register}/>
+        <Route path='/createevent' component={CreateEvent}/>
         </Switch>
-      
     </div>
    </BrowserRouter>
   );
