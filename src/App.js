@@ -9,6 +9,8 @@ import CompanyMemberDashboard from './components/CompanyMemberDashboard'
 import Register from './components/Register'
 import NavBar from './components/NavBar'
 import CreateEvent from './components/CreateEvent'
+import AddCompanyMember from './components/AddCompanyMember'
+import ViewEventDeatils from './components/ViewEventDeatils'
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
         <Route  path='/CompanyMemberDashboard' component={CompanyMemberDashboard}/>
         <Route  path='/Register' component={Register}/>
         <Route path='/createevent' component={CreateEvent}/>
+         <Route path='/addcompanymember' component={AddCompanyMember}/>
+         <Route path='/view-event/:id' component={ViewEventDeatils}/>
         </Switch>
     </div>
    </BrowserRouter>

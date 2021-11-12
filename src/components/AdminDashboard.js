@@ -1,54 +1,93 @@
 import React, { Component } from 'react'
 import AdminService from '../services/AdminService'
 import './AdminDashboard.css'
+import {  Table } from 'react-bootstrap';
+
  class AdminDashboard extends Component {
       constructor(props) {
     super(props)
     this.state = {
-        events:[],
+       events:[{"id":1,
+             "eventname":"infosys hiring",
+             "eventdate":"12/10/21",
+             "location":"hyderabad",
+             "emailid":"infosys@gmail.com"
+             },
+             {"id":2,
+             "eventname":"Mindtree hiring",
+             "eventdate":"12/10/21",
+             "location":"Banglore",
+             "emailid":"mindtree@gmail.com"
+             },
+             {"id":3,
+             "eventname":"TCS hiring",
+             "eventdate":"12/11/21",
+             "location":"Chennai",
+             "emailid":"tcs@gmail.com"
+             }
+             
+             ]
       
     }
+    this.deleteEmployee = this.deleteEmployee.bind(this)
+    this.viewEmployee = this.viewEmployee.bind(this)
    
   }
+
    componentDidMount() {
-    AdminService.getEventsList().then((res) => {
-        console.log(res)
-      this.setState({ events: res.data })
-    })
+    // AdminService.getEventsList().then((res) => {
+    //     console.log(res)
+    //  // this.setState({ events: res.data })
+    // })
   }
+
+  deleteEmployee(id)
+ {
+    //  EmployeeService.deleteEmployee(id).then(res =>{
+        this.setState({ events: this.state.events.filter(event => event.id !== id) }); 
+        //  });
+
+ }
+viewEmployee(id)
+{
+    this.props.history.push(`/view-event/${id}`)
+}
     render() {
         return (
             <div>
-            <div class="sidebar">
-  <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
-  <a href="#services"><i class="fa fa-fw fa-wrench"></i> Services</a>
-  <a href="#clients"><i class="fa fa-fw fa-user"></i> Clients</a>
-  <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-</div>
-                <h2 className="text-center">Events List</h2>
-                 <div className="row">
-                    <table className="styled-table">
+           <h1>Events List</h1>
+           <Table striped bordered hover>
                         <thead>
                         <tr>
-                            <th>Event Id</th>
-                            <th> Event Type</th>
-                            <th> Event Description </th>
-                            <th>Event Name </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {this.state.events.map((event) => (
-                            <tr key={event.id}>
-                            <td>{event.id}</td>
-                            <td>{event.eventType}</td>
-                            <td>{event.eventDescription}</td>
-                            <td>{event.eventName}</td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
+                    <th>Event ID</th>
+                    <th>Event Name</th>
+                    <th>Event Date</th>
+                    <th>Location</th>
+                    <th>Email ID</th>
+                    <th>Actions</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+     
+                  { this.state.events.map(event => {
+                      return (<tr key={event.id }>
+                        <td>{ event.id }</td>
+                        <td>{ event.eventname }</td>
+                        <td>{ event.eventdate }</td>
+                        <td>{ event.location }</td>
+                        <td>{ event.emailid }</td>
+                        <td>
+                    <button style={{marginLeft:"10px"}} onClick={() => this.deleteEmployee(event.id)} className="btn btn-danger">Delete</button>
+                    <button style={{marginLeft:"10px"}} onClick={() => this.viewEmployee(event.id)} className="btn btn-info">View</button>
+                  </td>
+                      </tr>)
+                     }) 
+                    }
+                </tbody>
+           </Table>
+
+            </div>
         )
     }
 }
