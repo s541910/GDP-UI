@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Welcome.css'
-import photo from '../images/connect-com-1.jpg'
+import photo from '../images/connect-comp-1.jpg'
 
  class Welcome extends Component {
     render() {

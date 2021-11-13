@@ -72,4 +72,4 @@ export default class CreateEvent extends Component {
       </div>
         )
     }
-}s
+}
