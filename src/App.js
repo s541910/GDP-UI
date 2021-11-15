@@ -10,6 +10,8 @@ import Register from './components/Register'
 import CreateEvent from './components/CreateEvent'
 import AddCompanyMember from './components/AddCompanyMember'
 import ViewEventDeatils from './components/ViewEventDeatils'
+import CompanyMemberDashboardList from './components/CompanyMemberDashboardList'
+
 
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
         <Route path='/createevent' component={CreateEvent}/>
         <Route path='/addcompanymember' component={AddCompanyMember}/>
         <Route path='/view-event/:id' component={ViewEventDeatils}/>
+        <Route path="/CompanyMemberDashboardList" component={CompanyMemberDashboardList}/>
+       
         </Switch>
     </div>
    </BrowserRouter>

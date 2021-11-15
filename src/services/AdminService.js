@@ -6,5 +6,13 @@ class AdminService{
     {
         return axios.get(apiBaseUrl+"eventslist")
     }
+    getCompnayMemList()
+    {
+        return axios.get(apiBaseUrl+"companyMembersList")
+    }
+    saveCompanyMember(user)
+    {
+        return axios.post(apiBaseUrl+'register',user)
+    }
    }
 export default new AdminService()

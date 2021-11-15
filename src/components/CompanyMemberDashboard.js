@@ -6,16 +6,13 @@ export default class CompanyMemberDashboard extends Component {
 
     constructor(props) {
         super(props)
-    
         this.state = {
             events:[],
         }
     }
 
-//      componentDidMount() {
-    
-//       this.setState({ employees: res.data })
-    
+//      componentDidMount() { 
+//       this.setState({ employees: res.data })  
 //   }
     render() {
         return (

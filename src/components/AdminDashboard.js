@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './AdminDashboard.css'
 import AdminService from '../services/AdminService'
+import EventService from '../services/EventService'
 import {  Table } from 'react-bootstrap';
 
  class AdminDashboard extends Component {
@@ -9,31 +10,43 @@ import {  Table } from 'react-bootstrap';
     this.state = {
       events:[] 
     }
-    this.deleteEmployee = this.deleteEmployee.bind(this)
-    this.viewEmployee = this.viewEmployee.bind(this)
-    // this.AddCompanyMember = this.AddCompanyMember.bind(this)
-    // this.viewCompnayMemberList = this.viewCompnayMemberList.bind(this)
+    this.deleteEvent = this.deleteEvent.bind(this)
+    this.viewEvent = this.viewEvent.bind(this)
+     this.AddCompanyMember = this.AddCompanyMember.bind(this)
+     this.viewCompnayMemberList = this.viewCompnayMemberList.bind(this)
    
   }
 
    componentDidMount() {
     AdminService.getEventsList().then((res) => {
-        console.log(res)
      this.setState({ events: res.data })
-     console.log(res)
     })
   }
-
-  deleteEmployee(id)
- {
-    //  EmployeeService.deleteEmployee(id).then(res =>{
-        this.setState({ events: this.state.events.filter(event => event.id !== id) }); 
-        //  });
- }
-viewEmployee(id)
+viewCompnayMemberList()
 {
-    this.props.history.push(`/view-event/${id}`)
+   const {history} = this.props;
+        history.push('/CompanyMemberDashboardList')
 }
+AddCompanyMember()
+{
+  const {history} = this.props;
+        history.push('/addcompanymember')
+
+}
+back()
+  {
+     this.props.history.goBack();
+  }
+  deleteEvent(id)
+   {
+     EventService.deleteEvent(id).then(res =>{
+        this.setState({ events: this.state.events.filter(event => event.id !== id) }); 
+      });
+      }
+    viewEvent(id)
+    {
+        this.props.history.push(`/view-event/${id}`)
+    }
     render() {
         return (
             <div>
@@ -64,15 +77,15 @@ viewEmployee(id)
                         <td>{ event.location }</td>
                         
                         <td>
-                    <button style={{marginLeft:"10px"}} onClick={() => this.deleteEmployee(event.id)} className="btn btn-danger">Delete</button>
-                    <button style={{marginLeft:"10px"}} onClick={() => this.viewEmployee(event.id)} className="btn btn-info">View</button>
+                    <button style={{marginLeft:"10px"}} onClick={() => this.deleteEvent(event.id)} className="btn btn-danger">Delete</button>
+                    <button style={{marginLeft:"10px"}} onClick={() => this.viewEvent(event.id)} className="btn btn-info">View</button>
                   </td>
                       </tr>)
                      }) 
                     }
                 </tbody>
            </Table>
-
+ <button style={{marginLeft:"10px"}} onClick={() => this.back()} className="btn btn-danger">Back</button> 
             </div>
         )
     }

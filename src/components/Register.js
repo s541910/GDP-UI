@@ -30,7 +30,8 @@ class Register extends Component {
             "firstname": this.state.first_name,
             "lastname": this.state.last_name,
             "email": this.state.email,
-            "password": this.state.password
+            "password": this.state.password,
+            "role":"user"
         }
         LoginService.Register(payload).then((response) => {
                 console.log(response.status);

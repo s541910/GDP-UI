@@ -3,14 +3,12 @@ import React, { Component } from 'react'
 export default class CreateEvent extends Component {
     constructor(props) {
         super(props)
-    
         this.state = {
          form:""             
         }
     }
     
-
-    cancel()
+cancel()
 {
     this.props.history.push('/');
 }
