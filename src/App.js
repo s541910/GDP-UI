@@ -7,7 +7,6 @@ import Welcome from './components/Welcome';
 import AdminDashboard from'./components/AdminDashboard';
 import CompanyMemberDashboard from './components/CompanyMemberDashboard'
 import Register from './components/Register'
-import NavBar from './components/NavBar'
 import CreateEvent from './components/CreateEvent'
 import AddCompanyMember from './components/AddCompanyMember'
 import ViewEventDeatils from './components/ViewEventDeatils'
@@ -17,7 +16,7 @@ function App() {
   return (
    <BrowserRouter>
       <div className="App">
-       <NavBar/>
+       {/* <NavBar/> */}
         <Switch>
         <Route exact path='/' component={Welcome}/>
         <Route exact path='/Login' component={Login}/>
@@ -26,8 +25,8 @@ function App() {
         <Route  path='/CompanyMemberDashboard' component={CompanyMemberDashboard}/>
         <Route  path='/Register' component={Register}/>
         <Route path='/createevent' component={CreateEvent}/>
-         <Route path='/addcompanymember' component={AddCompanyMember}/>
-         <Route path='/view-event/:id' component={ViewEventDeatils}/>
+        <Route path='/addcompanymember' component={AddCompanyMember}/>
+        <Route path='/view-event/:id' component={ViewEventDeatils}/>
         </Switch>
     </div>
    </BrowserRouter>

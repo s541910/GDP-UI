@@ -43,11 +43,11 @@ class Login extends Component {
             }   else if(role === "committemember")  
             {
                 
-                history.push('/AdminDashboard');  
+                history.push('/CompanyMemberDashboard');  
             }
             else{
                 
-                history.push('/AdminDashboard');  
+                history.push('/UserDashboard');  
             }
             
         }

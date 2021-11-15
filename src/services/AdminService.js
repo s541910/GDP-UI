@@ -4,7 +4,7 @@ const apiBaseUrl = "http://localhost:8080/";
 class AdminService{
     getEventsList()
     {
-        return axios.get(apiBaseUrl+"/events")
+        return axios.get(apiBaseUrl+"eventslist")
     }
    }
 export default new AdminService()

@@ -5,9 +5,10 @@ export default class CreateEvent extends Component {
         super(props)
     
         this.state = {
-             
+         form:""             
         }
     }
+    
 
     cancel()
 {
@@ -31,23 +32,39 @@ export default class CreateEvent extends Component {
                       placeholder="Event Name"
                       name="eventName"
                       className="form-control"
-                    //   value={this.state.eventName}
+                      value={this.state.eventName}
                     //   onChange={this.changeEventNameHandler}
                     />
-                    <label>Last Name:</label>
+                    <label>Event Description:</label>
                     <input
-                      placeholder="Last Name"
-                      name="lastName"
+                      placeholder="Event Description"
+                      name="eventDescription"
                       className="form-control"
-                    //   value={this.state.lastName}
+                      value={this.state.eventDescription}
                     //   onChange={this.changeLastNameHandler}
                     />
-                    <label>Email:</label>
+                    <label>Location</label>
                     <input
-                      placeholder="Email"
-                      name="email"
+                      placeholder="Location"
+                      name="location"
                       className="form-control"
-                    //   value={this.state.emailId}
+                      value={this.state.location}
+                    //   onChange={this.changeEmailHandler}
+                    />
+                    <label>Event Date</label>
+                    <input
+                      placeholder="Event Date"
+                      name="eventDate"
+                      className="form-control"
+                      value={this.state.eventDate}
+                    //   onChange={this.changeEmailHandler}
+                    />
+                    <label>Event Type</label>
+                    <input
+                      placeholder="Event Type"
+                      name="eventType"
+                      className="form-control"
+                      value={this.state.eventType}
                     //   onChange={this.changeEmailHandler}
                     />
                   </div>

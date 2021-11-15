@@ -3,3 +3,10 @@
     width: 1270px;
     background-size: 100%;
   }
+/* 
+  @media screen and (min-width: 415px){
+    .container {
+      display: flex;
+      flex-direction: row;
+    }
+  } */
