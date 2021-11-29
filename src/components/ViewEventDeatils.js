@@ -1,26 +1,22 @@
 import React, { Component } from 'react'
+import EventService from '../services/EventService'
 
 export default class ViewEventDeatils extends Component {
     constructor(props) {
         super(props)
-    
         this.state = {
-             event:{"id":1,
-             "eventname":"infosys hiring",
-             "eventdate":"12/10/21",
-             "location":"hyderabad",
-             "emailid":"infosys@gmail.com"
-             },
-             
+            event:[],  
             id: this.props.match.params.id
              
         }
     }
-//     componentDidMount() {
-//     // EmployeeService.getEmployeeById(this.state.id).then((res) => {
-//       this.setState({ event: events.data[id] })
-//     // })
-//   }
+    componentDidMount() {
+     EventService.getEventById(this.state.id).then((res) => {
+       console.log("sdkfbh",this.state.id);
+       console.log("ashdb",res.data);
+       this.setState({ event: res.data })
+     })
+  }
     
     render() {
         return (

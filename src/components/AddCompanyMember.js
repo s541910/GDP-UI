@@ -76,6 +76,30 @@ export default class AddCompanyMember extends Component {
                       value={this.state.email}
                       onChange={this.changeEmailHandler}
                     />
+                     <label>Company Name</label>
+                    <input
+                      placeholder="Email"
+                      name="Company Name"
+                      className="form-control"
+                      value={this.state.companyName}
+                      onChange={this.changecompanyNameHandler}
+                    />
+                     <label>Address</label>
+                    <input
+                      placeholder="Address"
+                      name="Address"
+                      className="form-control"
+                      value={this.state.address}
+                      onChange={this.changeaddressHandler}
+                    />
+                     <label>Mobile Number</label>
+                    <input
+                      placeholder="Mobile Number"
+                      name="mobilenumber"
+                      className="form-control"
+                      value={this.state.mobilenumber}
+                      onChange={this.changeMobileNumberHandler}
+                    />
                   </div>
                   <button
                     className="btn btn-success"
