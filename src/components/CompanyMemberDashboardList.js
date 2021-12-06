@@ -14,6 +14,12 @@ export default class CompanyMemberDashboardList extends Component {
      this.setState({compnayMembersList: res.data })
     })
   }
+  deleteCompnayMember(id)
+   {
+     AdminService.deleteCompnayMemById(id).then(res =>{
+        this.setState({ compnayMembersList: this.state.compnayMembersList.filter(cMlist => cMlist.id !== id) }); 
+      });
+      }
   back()
   {
      this.props.history.goBack();
