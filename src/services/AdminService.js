@@ -14,5 +14,9 @@ class AdminService{
     {
         return axios.post(apiBaseUrl+'register',user)
     }
+    deleteCompnayMember(id)
+    {
+        return axios.delete(apiBaseUrl+"deleteCompanyMember/"+id)
+    }
    }
 export default new AdminService()
