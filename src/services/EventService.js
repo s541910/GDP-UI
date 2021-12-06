@@ -4,11 +4,11 @@ import axios from 'axios';
 
  class EventService{
     getEventById(id){
-        return axios.post(apiBaseUrl+"event/{id}",id)
+        return axios.get(apiBaseUrl+"event/"+id)
     }
-    deleteEvent(Id)
+    deleteEvent(id)
     {
-       return axios.post(apiBaseUrl+"event/{id}") 
+       return axios.delete(apiBaseUrl+"deleteevent/"+id) 
     }
     
 }
